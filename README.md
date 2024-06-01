@@ -28,8 +28,8 @@ This code can be *useful if*
 
 ### Why Octave/Matlab and not Python/C++?
 
-1. *Efficiency* - The core of the reconstruction is performed using very efficient and [scalable NUFFT library](https://www-user.tu-chemnitz.de/~potts/nfft/)
-2. *Pedagogical reasons* - code is very simple and clear, so you can easily adapt it for your own needs (see [section below](#some-mathematical-background) for details on implemented sampling geometry and filters)
+1. *Efficiency* - The core of the reconstruction is performed using [very efficient and scalable NUFFT library](https://www-user.tu-chemnitz.de/~potts/nfft/)
+2. *Pedagogical reasons* - code is very simple and clear, so you can easily adapt it for your own needs (see [section below](#input-sinogram-format) for details on implemented sampling geometry and filters)
 
 
 
@@ -53,6 +53,14 @@ Look through `fbp_nfft3d_test.m`, `fbp_nfft2d_test.m` in `/tests` folder.
 
 * `rtft2d.m`, `rtft3d.m` - compute Fourier data (grid points and values) in 2D/3D space (filters are also applied at this stage)
 * `nfft_reconstruct_2d.m`, `nfft_reconstruct_3d.m` - compute Fourier integral over the data
+
+
+
+## Input sinogram format
+
+TBD
+
+
 
 
 ## Note
