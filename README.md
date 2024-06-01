@@ -1,6 +1,6 @@
 ## Filtered Backprojection algorithm in 2D/3D
 
-This is a custom multi-threaded implementation in Octave/Matlab of Filtered-Backprojection algorithms in 2D/3D for parallel beam geometry.
+This is a custom multi-threaded implementation in Octave/Matlab of Filtered-Backprojection in 2D/3D for parallel beam geometry.
 
 
 
@@ -40,7 +40,11 @@ This code can be *useful if*
 ## Dependencies
 
 1. Installed NUFFT library from [here](https://www-user.tu-chemnitz.de/~potts/nfft/) with Matlab/Octave support (compiled mex-file)
-2. Octave/Matlab with added path to Matlab/Octave interface of NUFFT (use`addpath('path-to-folder with NUFFT .mex and .m files')`)
+
+2. Octave/Matlab with added path to Matlab/Octave interface of NUFFT 
+
+   (e.g. use`addpath('path-to-folder with NUFFT .mex and .m files')`)
+
 3. `cartprod.m` which is already in repository; original file is from [Matlab File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/5475-cartprod-cartesian-product-of-multiple-sets)
 
 
@@ -53,10 +57,10 @@ No installation required apart of what is listed in [dependencies](#dependencies
 
 ## Usage example
 
-Look through `fbp_nfft3d_test.m`, `fbp_nfft2d_test.m` in `/tests` folder. 
+Run `fbp_nfft3d_test.m`, `fbp_nfft2d_test.m` in `/tests` folder. 
 
-* `rtft2d.m`, `rtft3d.m` - compute Fourier data (grid points and values) in 2D/3D space (filters are also applied at this stage)
-* `nfft_reconstruct_2d.m`, `nfft_reconstruct_3d.m` - compute Fourier integral over the data
+* `rtft2d.m`, `rtft3d.m` - used to compute Fourier data (grid and values) in 2D/3D (filters are also applied at this stage)
+* `nfft_reconstruct_2d.m`, `nfft_reconstruct_3d.m` - used to compute Fourier integral over the Fourier data
 
 
 
@@ -65,9 +69,8 @@ Look through `fbp_nfft3d_test.m`, `fbp_nfft2d_test.m` in `/tests` folder.
 #### Mathematical background
 
 Radon transform of function $f$ is defined as 
-$$
-Rf(s,\theta) = \int\limits_{\langle x, \theta\rangle = s}f(x)\, dx, \, s\in \mathbb{R}, \, \theta\in S^{d-1}
-$$
+
+![equation](https://latex.codecogs.com/svg.image?Rf(s,\theta)=\int\limits_{\langle&space;x,\theta\rangle}f(x)\,dx,\,s\in\mathbb{R},\,\theta\in&space;S^{d-1})
 
 * For $d=2$ Radon transform of $f$ is given by its integrals over all lines
 
@@ -79,22 +82,22 @@ Filtered Backprojection Algorithm (FBP) implements operator $R^{-1}$ which recon
 
 
 
-#### Implemented input format
+### Implemented input format
 
-Sinogram is given by array $Rf(s,\theta)$ on a grid $\{s_j\}_{j=1}^{N_s}$, $\{\theta_k\}_{k=1}^{N_{\theta}}$, where 
+Sinogram is given by array $Rf(s,\theta)$ on a grid ![equation](https://latex.codecogs.com/svg.image?\{s_j\}_{j=1}^{N_s}), ![equation](https://latex.codecogs.com/svg.image?\{\theta_k\}_{k=1}^{N_s}), where 
 
-1. $\{s_j\}_{j=1}^{N_s}$ form a uniform grid on $[-1,1]$​ (endpoints included)
+1. ![equation](https://latex.codecogs.com/svg.image?\{s_j\}_{j=1}^{N_s}) form a uniform grid on $[-1,1]$​ (endpoints included)
 
 
 
-##### 2D
+#### 2D
 
 
 2. $\theta_k = (\cos\varphi_k, \sin\varphi_k)$, $\varphi_k = k\cdot \frac{2\pi}{N_{\theta}}$, $k\in \{0, \dots, N_{\theta}-1\}$
 
 
 
-##### 3D
+#### 3D
 
 2. $\theta_k = (\sin\gamma_m\cos\varphi_n, \sin\gamma_m\sin\varphi_n, \cos\gamma_m)$, $k=(m,n)$, $m\in \{0,\dots N_\gamma-1\}$, $n\in \{0,\dots N_{\varphi}-1\}$
 
@@ -104,7 +107,7 @@ Sinogram is given by array $Rf(s,\theta)$ on a grid $\{s_j\}_{j=1}^{N_s}$, $\{\t
 
 
 
-##### Underlying assumptions
+#### Underlying assumptions
 
 * it assumed that $\mathrm{supp} f\subset B(1)$ (centered unit ball) - this is used for *zero padding* of the sinogram 
   * padding sinogram with zeros for compactly supported signal does not alter the reconstruction
