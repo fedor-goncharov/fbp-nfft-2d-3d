@@ -70,7 +70,7 @@ Run `fbp_nfft3d_test.m`, `fbp_nfft2d_test.m` in `/tests` folder.
 
 Radon transform of function $f$ is defined as 
 
-![equation](https://latex.codecogs.com/svg.image?Rf(s,\theta)=\int\limits_{\langle&space;x,\theta\rangle}f(x)\,dx,\,s\in\mathbb{R},\,\theta\in&space;S^{d-1})
+![equation](https://latex.codecogs.com/svg.latex?Rf(s,\theta)=\int\limits_{\langle&space;x,\theta\rangle}f(x)\,dx,\,s\in\mathbb{R},\,\theta\in&space;S^{d-1})
 
 * For $d=2$ Radon transform of $f$ is given by its integrals over all lines
 
@@ -84,9 +84,9 @@ Filtered Backprojection Algorithm (FBP) implements operator $R^{-1}$ which recon
 
 ### Implemented input format
 
-Sinogram is given by array $Rf(s,\theta)$ on a grid ![equation](https://latex.codecogs.com/svg.image?\{s_j\}_{j=1}^{N_s}), ![equation](https://latex.codecogs.com/svg.image?\{\theta_k\}_{k=1}^{N_s}), where 
+Sinogram is given by array $Rf(s,\theta)$ on a grid ![equation](https://latex.codecogs.com/svg.latex?\{s_j\}_{j=1}^{N_s}), ![equation](https://latex.codecogs.com/svg.latex?\{\theta_k\}_{k=1}^{N_s}), where 
 
-1. ![equation](https://latex.codecogs.com/svg.image?\{s_j\}_{j=1}^{N_s}) form a uniform grid on $[-1,1]$​ (endpoints included)
+1. ![equation](https://latex.codecogs.com/svg.latex?\{s_j\}_{j=1}^{N_s}) form a uniform grid on $[-1,1]$​ (endpoints included)
 
 
 
