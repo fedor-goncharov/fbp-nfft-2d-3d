@@ -55,24 +55,6 @@ Look through `fbp_nfft3d_test.m`, `fbp_nfft2d_test.m` in `/tests` folder.
 * `nfft_reconstruct_2d.m`, `nfft_reconstruct_3d.m` - compute Fourier integral over the data
 
 
-
-## Some mathematical background
-
-Radon transform of $f$  is defined by the formula
-$$
-Rf(s,\theta) = \int\limits_{\langle x,\theta\rangle}f(x)\, dx, \, s\in \mathbb{R}, \, \theta\in S^{d-1}.
-$$
-Function $Rf(s,\theta)$ is called **sinogram**. 
-
-Namely, $Rf(s,\theta)$ is an integral of $f$ over $(d-1)$-dimensional plane $\langle x, \theta\rangle = s$. 
-For $d=2,\,3$ these are integrals of $f$ over all lines and planes, correspondingly (both are integrals over **hyperplanes**).
-
-
-FBP algorithm implements $R^{-1}$ which reconstructs function from its hyperplane integrals.
-
-Several implementations of FBP [are possible](https://en.wikipedia.org/wiki/Radon_transform), this implementation follows "spectral" approach where reconstruction is performed via inverse Fourier integral with a multiplicative filter in Fourier domain. 
-
-
 ## Note
 
 Implementation is scalable, however, RAM consumption in 3D can be quite large (observed up to 80GB of RAM allocation in 3D case for large grids).
